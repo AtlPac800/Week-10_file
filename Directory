@@ -1,0 +1,28 @@
+import os
+def main():
+    
+    directory = input("Enter the name of the directory, where you want to save the file : ")
+    file_name = input("Enter the filename : ")
+    name = input("Enter your name : ")
+    address = input("Enter your address : ")
+    phone_number = input("Enter your phone number : ")
+
+    #Program retrieves directory if available
+    if os.path.isdir(directory):
+        #Creating and opening the file
+        write_file = open(os.path.join(directory,file_name),'w')
+        #Writing data by a comma separated line
+        write_file.write(name+','+address+','+phone_number+'\n')
+        write_file.close()
+        print("File content:")
+
+        #Program reads the file for validating purposes
+        read_file = open(os.path.join(directory,file_name),'r')
+        for line in read_file:
+            print(line)
+        read_file.close()
+
+    else:
+        print("Sorry that directory could not be found. ")
+
+main()
